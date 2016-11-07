@@ -214,7 +214,7 @@ class ElbInformation(object):
 def main():
     argument_spec = ec2_argument_spec()
     argument_spec.update(dict(
-            names={'default': None, 'type': 'list'}
+            names={'default': [], 'type': 'list'}
         )
     )
     module = AnsibleModule(argument_spec=argument_spec)
