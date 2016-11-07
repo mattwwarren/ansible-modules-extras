@@ -206,10 +206,12 @@ class ElbInformation(object):
 
         if all_elbs:
             for existing_lb in all_elbs:
-                if existing_lb.name in self.names:
-                    elb_array.append(self._get_elb_info(existing_lb))
-
-        return elb_array
+                if self.names and existing_lb.name in self.names:
+                    elb_array.append(existing_lb)
+                else:
+                    elb_array.append(existing_lb)
+                    
+        return list(map(self._get_elb_info, elb_array))
 
 def main():
     argument_spec = ec2_argument_spec()
